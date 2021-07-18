@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Alert } from "react-native";
 import Loading from "./Loading";
 import * as Location from "expo-location";
-
+import Weather from "./Weather";
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -21,7 +21,11 @@ export default function App() {
   useEffect(() => {
     getLocation();
   }, []);
-  return isLoading ? <Loading></Loading> : null;
+  return isLoading ? (
+    <Loading></Loading>
+  ) : (
+    <Weather temp={28} condition={"clear"}></Weather>
+  );
 }
 
 const styles = StyleSheet.create({
